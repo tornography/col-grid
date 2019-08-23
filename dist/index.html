@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <title>col-grid Demo</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <link href="col-grid.css" rel="stylesheet" />
+        <style>
+            html {
+                box-sizing: border-box;
+            }
+            *,
+            *:before,
+            *:after {
+                box-sizing: inherit;
+            }
+
+            body {
+                padding: 2em;
+                font-family: Arial, Verdana, sans-serif;
+            }
+
+            h2 {
+                font-size: 2em;
+                margin-bottom: 1em;
+            }
+
+            .col-grid {
+                margin-bottom: 2em;
+            }
+
+            .col-grid > * {
+                background-color: lightblue;
+                text-align: center;
+                padding: 1em 0;
+            }
+
+            .col-grid .col-grid > * {
+                background-color: #235e71;
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>col-grid Demo</h1>
+
+        <h2>Basic Equal Columns</h2>
+
+        <div class="col-grid gap">
+            <div>1</div>
+            <div>1</div>
+            <div>1</div>
+            <div>1</div>
+            <div>1</div>
+            <div>1</div>
+            <div>1</div>
+            <div>1</div>
+            <div>1</div>
+            <div>1</div>
+            <div>1</div>
+            <div>1</div>
+        </div>
+
+        <div class="col-grid columns-6 gap">
+            <div>2</div>
+            <div>2</div>
+            <div>2</div>
+            <div>2</div>
+            <div>2</div>
+            <div>2</div>
+        </div>
+
+        <div class="col-grid columns-4 gap">
+            <div>3</div>
+            <div>3</div>
+            <div>3</div>
+            <div>3</div>
+        </div>
+
+        <div class="col-grid columns-3 gap">
+            <div>4</div>
+            <div>4</div>
+            <div>4</div>
+        </div>
+
+        <div class="col-grid columns-2 gap">
+            <div>6</div>
+            <div>6</div>
+        </div>
+
+        <h2>With Breakpoints</h2>
+
+        <div class="col-grid columns-2 columns-md-3 columns-lg-6 gap">
+            <div>two</div>
+            <div>on small</div>
+            <div>three</div>
+            <div>on medium</div>
+            <div>six</div>
+            <div>on LARGE</div>
+        </div>
+
+        <h2>With Automatic Fit And Min-Width (200px)</h2>
+
+        <div class="col-grid auto-fill-200 gap">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+            <div>7</div>
+            <div>8</div>
+            <div>9</div>
+            <div>10</div>
+            <div>11</div>
+            <div>12</div>
+        </div>
+
+        <h2>No-Equal columns (layout)</h2>
+
+        <div class="col-grid gap">
+            <div class="span-3">3</div>
+            <div class="span-6">6</div>
+            <div class="span-3">3</div>
+        </div>
+
+        <div class="col-grid gap">
+            <div class="span-3">3</div>
+            <div class="span-9">9</div>
+        </div>
+
+        <div class="col-grid gap">
+            <div class="span-4">4</div>
+            <div class="span-8">8</div>
+        </div>
+
+        <h2>Start Column (kind of offset)</h2>
+        <div class="col-grid gap">
+            <div class="start-md-2 span-11">2</div>
+            <div class="start-md-3 span-10">3</div>
+            <div class="start-md-4 span-9">4</div>
+            <div class="start-md-5 span-8">5</div>
+            <div class="start-md-6 span-7">6</div>
+            <div class="start-md-7 span-6">7</div>
+            <div class="start-md-8 span-5">8</div>
+            <div class="start-md-9 span-4">9</div>
+            <div class="start-md-10 span-3">10</div>
+            <div class="start-md-11 span-2">11</div>
+            <div class="start-md-12">12</div>
+        </div>
+
+        <h2>Nested</h2>
+
+        <div class="col-grid gap">
+            <div class="span-6 col-grid columns-6 gap">
+                <div class="span-3">3/6</div>
+                <div class="span-3">3/6</div>
+            </div>
+            <div class="span-6 col-grid gap">
+                <div class="span-6">6/12</div>
+                <div class="span-6">6/12</div>
+            </div>
+        </div>
+    </body>
+</html>

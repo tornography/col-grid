@@ -1,0 +1,87 @@
+$column-base: 12;
+$start-grid-at: 20em;
+$breakpoints: (md: 30em, lg: 50em);
+$auto-fill-widths: (200, 400);
+$gap: 1em;
+
+@for $i from 2 through $column-base {
+  @if $column-base % $i == 0 {
+    .i-#{$i} { content: #{$i}; }
+  }
+}
+
+.col-grid {
+    @media (min-width: #{$start-grid-at}) { // mobile first, so no grid on small screens
+        display: grid;
+   }
+   grid-template-columns: repeat($column-base, 1fr); // standard 12 equal colummns
+}
+
+
+/* equal columns */
+@for $i from 2 through $column-base {
+  @if $column-base % $i == 0 {
+    .col-grid.columns-#{$i} {
+      grid-template-columns: repeat($i, 1fr);
+    }
+  }
+}
+@each $bp, $width in $breakpoints {
+  @media (min-width: #{$width}) {
+    @for $i from 2 through $column-base {
+      @if $column-base % $i == 0 {
+        .col-grid.columns-#{$bp}-#{$i} {
+          grid-template-columns: repeat($i, 1fr);
+        }
+      }
+    }
+  }
+}
+
+/* auto-fill */
+@each $width in $auto-fill-widths {
+    .col-grid.auto-fill-#{$width} {
+        grid-template-columns: repeat(auto-fill, minmax(#{$width}px, 1fr));
+    }
+}
+
+.col-grid[class*="auto-fill-"] > * {
+    max-width: 100%;
+}
+
+/* spans */
+@for $col from 2 through $column-base {
+  .col-grid .span-#{$col} {
+      grid-column: auto / span $col;
+  }
+}
+@each $bp, $width in $breakpoints {
+  @media (min-width: #{$width}) {
+    @for $col from 2 through $column-base {
+      .col-grid .span-#{$bp}-#{$col} {
+        grid-column: auto / span $col;
+      }
+    }
+  }
+}
+
+/* starts ("offsets") */
+@for $col from 2 through $column-base {
+  .col-grid .start-#{$col} {
+    grid-column-start: $col;
+  }
+}
+@each $bp, $width in $breakpoints {
+  @media (min-width: #{$width}) {
+    @for $col from 2 through $column-base {
+      .col-grid .start-#{$bp}-#{$col} {
+        grid-column-start: $col;
+      }
+    }
+  }
+}
+
+/* gap */
+.col-grid.gap {
+    grid-gap: $gap;
+}
